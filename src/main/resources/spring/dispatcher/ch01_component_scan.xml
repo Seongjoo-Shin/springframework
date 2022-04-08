@@ -6,18 +6,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
-    <!-- 개별 객체 -->
-	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- @RequestParam, @GetMapping, @PostMapping, @ModelAttribute 자동 인식 -->
 	<annotation-driven />
-
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/views/" />
-		<beans:property name="suffix" value=".jsp" />
-	</beans:bean>
-	
 	
 	<!-- @Controller, @Component 적용 클래스를 객체로 생성, 
 	@PostConstruct, @PreDestroy, @Resource, @Autowired, @Inject, @Value 자동 인식 -->
