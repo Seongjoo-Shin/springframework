@@ -9,6 +9,7 @@
 	<configs>
 		<config>src/main/resources/spring/root/ch01_component_scan.xml</config>
 		<config>src/main/resources/spring/dispatcher/ch01_component_scan.xml</config>
+		<config>src/main/resources/spring/dispatcher/ch02_resources.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
