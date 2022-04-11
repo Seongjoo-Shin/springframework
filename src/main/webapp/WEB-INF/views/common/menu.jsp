@@ -3,13 +3,13 @@
 	<li class="nav-item mb-2">
 		<h6>
 			<span class="mr-2">Ch01. </span>
-			<a href="" class="text-white">프르젝트 생성 및 설정</a>
+			<a href="${pageContext.request.contextPath}/ch01/content" class="text-white">Controller와 view 동작 이해</a>
 		</h6>
 	</li>
 	<li class="nav-item mb-2">
 		<h6>
 			<span class="mr-2">Ch02. </span>
-			<a href="" class="text-white">Controller/Request Mapping</a>
+			<a href="#" class="text-white">메뉴2</a>
 		</h6>
 	</li>
 </ul>
