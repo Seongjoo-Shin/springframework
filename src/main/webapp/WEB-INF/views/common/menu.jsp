@@ -24,4 +24,10 @@
 			<a href="${pageContext.request.contextPath}/ch04/content" class="text-white">Controller/Validation</a>
 		</h6>
 	</li>
+	<li class="nav-item mb-2">
+		<h6>
+			<span class="mr-2">Ch05. </span>
+			<a href="${pageContext.request.contextPath}/ch05/content" class="text-white">Controller/Header & Cookie</a>
+		</h6>
+	</li>
 </ul>
