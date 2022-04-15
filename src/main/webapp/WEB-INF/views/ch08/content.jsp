@@ -90,6 +90,7 @@
 						$.ajax({
 							url: "loginAjax",
 							data: {mid, mpassword},
+							//data: {mid:midValue, mpassword:mpasswordValue},
 							method: "post"
 						}).done((data) => {
 							//data = {result:"success"}

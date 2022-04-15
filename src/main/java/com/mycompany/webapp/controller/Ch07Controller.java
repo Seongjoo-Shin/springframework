@@ -137,10 +137,14 @@ public class Ch07Controller {
 		return "ch07/boardDetail";
 	}
 	
+	// 파라미터로 넘어온 값을 매개변수로 사용하려고할 때 파라미터의 이름으로 바로 담아준다
 	@GetMapping("/modelAttribute")
-	public String modelAttribute(@ModelAttribute("kind") String kind, @ModelAttribute("sex") String sex) {
+	public String modelAttribute(
+			@ModelAttribute("kind") String kind, 
+			@ModelAttribute("sex") String sex) {
 		return "ch07/clothInfo";
 	}
+
 	
 	/*@GetMapping("/modelAttribute")
 	public String modelAttribute(String kind, String sex, Model model) {
@@ -149,15 +153,23 @@ public class Ch07Controller {
 		return "ch07/clothInfo";
 	}*/
 	
-	@GetMapping("/commandObject")
+	/*@GetMapping("/commandObject")
 	public String commandObject(Ch07Cloth cloth) {
+		return "ch07/clothInfo";
+	}*/
+		
+	@GetMapping("/commandObject")
+	public String commandObject(@ModelAttribute("cloth") Ch07Cloth cloth) {
 		return "ch07/clothInfo";
 	}
 	
-	/*@GetMapping("/commandObject")
-	public String commandObject(@ModelAttribute("cloth") Ch07Cloth cloth) {
-		return "ch07/clothInfo";
-	}*/
+	// 요청 매핑 메소드가 실행될 때마다 먼저 실행 
+	@ModelAttribute("commonData")
+	public Ch07Board commonData() {
+		log.info("실행");
+		Ch07Board board = new Ch07Board(2, "제목2", "내용2", "글쓴이2", new Date());
+		return board;
+	}
 }
 
 
