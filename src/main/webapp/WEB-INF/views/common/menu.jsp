@@ -59,4 +59,16 @@
 			<a href="${pageContext.request.contextPath}/ch09/content" class="text-white">Controller/FileUpload & FileDownload</a>
 		</h6>
 	</li>
+	<li class="nav-item mb-2">
+		<h6>
+			<span class="mr-2">Ch10. </span>
+			<a href="${pageContext.request.contextPath}/ch10/content" class="text-white">Controller/Exception Handling</a>
+		</h6>
+	</li>
+	<li class="nav-item mb-2">
+		<h6>
+			<span class="mr-2">Ch11. </span>
+			<a href="${pageContext.request.contextPath}/ch11/content" class="text-white">View/Spring Tag Library</a>
+		</h6>
+	</li>
 </ul>
