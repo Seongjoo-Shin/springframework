@@ -1,6 +1,7 @@
 package com.mycompany.webapp.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -36,6 +37,10 @@ public class Ch11Controller {
 	@PostMapping("/form1")
 	public String handleForm1(@ModelAttribute("member") Ch11Member member) {
 		log.info(member);
+		log.info("mid : " + member.getMid());
+		log.info("mname : " + member.getMname());
+		log.info("mpassword : " + member.getMpassword());
+		log.info("mnation : " + member.getMnation());
 		return "redirect:/ch11/content";
 	}
 
@@ -75,7 +80,22 @@ public class Ch11Controller {
 
 		return "ch11/form2";
 	}
+	
+	@PostMapping("/form2")
+	public String handleForm2(@ModelAttribute("member") Ch11Member member) {
+		log.info("member type : " + member.getMtype());
+		log.info("member job : " + member.getMjob());
+		if(member.getMcity() == 1) {
+			log.info("member city : 서울");		
+		} else if(member.getMcity() == 2) {
+			log.info("member city : 부산");
+		} else if(member.getMcity() == 3) {
+			log.info("member city : 제주");
+		} 
 
+		return "redirect:/ch11/content";
+	}
+	
 	@GetMapping("/form3")
 	public String form3(@ModelAttribute("member") Ch11Member member, Model model) {
 		log.info("실행");
@@ -102,6 +122,28 @@ public class Ch11Controller {
 		return "ch11/form3";
 	}
 
+	@PostMapping("/form31")
+	public String handleForm31(@ModelAttribute("member") Ch11Member member) {
+		log.info("member languages : " + Arrays.toString(member.getMlanguage()));
+		return "redirect:/ch11/content";
+	}
+	
+	@PostMapping("/form32")
+	public String handleForm32(@ModelAttribute("member") Ch11Member member) {
+		ArrayList<String> ary = new ArrayList<>();
+		for(int s : member.getMskill()) {
+			if(s == 1) {
+				ary.add("SpringFramework");
+			} else if(s == 2) {
+				ary.add("SpringBoot");
+			}  else if(s == 3) {
+				ary.add("Vue");
+			}
+		}
+		log.info("member skills : " + ary);
+		return "redirect:/ch11/content";
+	}
+	
 	@GetMapping("/form4")
 	public String form4(@ModelAttribute("member") Ch11Member member, Model model) {
 		log.info("실행");
@@ -127,5 +169,28 @@ public class Ch11Controller {
 		member.setMcity(3);
 
 		return "ch11/form4";
+	}
+	
+	@PostMapping("/form41")
+	public String handleForm41(@ModelAttribute("member") Ch11Member member) {
+		log.info("member job : " + member.getMjob());
+		return "redirect:/ch11/content";
+	}
+	
+	@PostMapping("/form42")
+	public String handleForm42(@ModelAttribute("member") Ch11Member member) {
+		if(member.getMcity() == 1) {
+			log.info("member city : 서울");		
+		} else if(member.getMcity() == 2) {
+			log.info("member city : 부산");
+		} else if(member.getMcity() == 3) {
+			log.info("member city : 제주");
+		} 
+		return "redirect:/ch11/content";
+	}
+	
+	@RequestMapping("/form5")
+	public String form5(@ModelAttribute("member") Ch11Member member) {
+		return "ch11/form5";
 	}
 }

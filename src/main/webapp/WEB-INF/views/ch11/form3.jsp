@@ -24,7 +24,7 @@
 		</form>
 		--%>
 		
-		<form:form modelAttribute="member" method="post" action="form3" class="mt-3">
+		<form:form modelAttribute="member" method="post" action="form31" class="mt-3">
 			<div>
 				<form:checkboxes items="${languageList}" path="mlanguage" 
 				                 cssClass="mr-2" delimiter="&nbsp; | &nbsp;" cssStyle="width:20px; height:20px;"/>
@@ -32,7 +32,7 @@
 			<button type="submit" class="btn btn-info btn-sm">제출</button>
 		</form:form>
 		
-		<form:form modelAttribute="member" method="post" action="form3" class="mt-3">
+		<form:form modelAttribute="member" method="post" action="form32" class="mt-3">
 			<div>
 				<form:checkboxes items="${skillList}" path="mskill" 
 								 itemValue="code" itemLabel="label" 
