@@ -27,11 +27,8 @@ public class Ch12Controller {
 	}
 	
 	@RequestMapping("/fileDownload")
-	public String fileDownload(
-			@ModelAttribute("fileName") String fileName,
-			@ModelAttribute("userAgent") @RequestHeader("User-Agent") String userAgent) { //, Model model) {
+	public String fileDownload(@ModelAttribute("fileName") String fileName, @ModelAttribute("userAgent") @RequestHeader("User-Agent") String userAgent) {
 		log.info("실행");
-//		model.addAttribute("fileName", fileName);
 		return "ch12FileDownloadView";
 	}
 }
