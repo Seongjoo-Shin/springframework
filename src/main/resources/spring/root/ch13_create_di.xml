@@ -2,7 +2,9 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	
 	<!-- 기본 생성자를 이용해서 객체 생성 -->
 	<bean id="ch13Service2_1" class="com.mycompany.webapp.service.Ch13Service2CreateByXml" />
@@ -57,5 +59,16 @@
 				<prop key="key2">데이터2</prop>
 			</props>
 		</property>
+	</bean>
+	
+	<!-- Properties 값 관리 설정 -->
+	<context:property-placeholder location="classpath:properties/*.properties"/>
+	
+	<!-- Properties 값 주입 -->
+	<bean id="ch13Service7" class="com.mycompany.webapp.service.Ch13Service7InjectPropByXml">
+		<property name="prop1" value="${service.prop1}"/>
+		<property name="prop2" value="${service.prop2}"/>
+		<property name="prop3" value="${service.prop3}"/>
+		<property name="prop4" value="${service.prop4}"/>
 	</bean>
 </beans>
