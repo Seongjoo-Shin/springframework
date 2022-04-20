@@ -78,4 +78,10 @@
 			<a href="${pageContext.request.contextPath}/ch13/content" class="text-white">Management Object Create / DI</a>
 		</h6>
 	</li>
+	<li class="nav-item mb-2">
+		<h6>
+			<span class="mr-2">Ch14. </span>
+			<a href="${pageContext.request.contextPath}/ch14/content" class="text-white">DAO(Data Access Object)</a>
+		</h6>
+	</li>
 </ul>
