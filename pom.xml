@@ -167,16 +167,24 @@
 	      </dependency>
 	      
 	      <dependency>
-	          <groupId>org.springframework.security</groupId>
-	          <artifactId>spring-security-config</artifactId>
-	          <version>5.5.1</version>
-	      </dependency>
+	        <groupId>org.springframework.security</groupId>
+	        <artifactId>spring-security-config</artifactId>
+	        <version>5.5.1</version>
+	    </dependency>
 	      
-	      <dependency>
-	          <groupId>org.springframework.security</groupId>
-	          <artifactId>spring-security-taglibs</artifactId>
-	          <version>5.5.1</version>
-	      </dependency>
+	    <dependency>
+	        <groupId>org.springframework.security</groupId>
+	        <artifactId>spring-security-taglibs</artifactId>
+	        <version>5.5.1</version>
+	    </dependency>
+	      
+	      <!-- AOP -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.9.9.1</version>
+		</dependency>
+
 	</dependencies>
 	
     <build>

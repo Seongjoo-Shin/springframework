@@ -16,8 +16,10 @@
 		<config>src/main/resources/spring/dispatcher/ch12_viewresolver.xml</config>
 		<config>src/main/resources/spring/root/ch13_create_di.xml</config>
 		<config>src/main/resources/spring/root/ch14_datasource.xml</config>
+		<config>src/main/resources/spring/dispatcher/ch15_aop.xml</config>
 	</configs>
 	<autoconfigs>
+		<config>src/main/resources/spring/root/ch14_mybatis.xml</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>
