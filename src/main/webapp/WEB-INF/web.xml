@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
-	
-  <!-- ContextLoaderListener가 Root WebApplicationContext를 생성할 때 사용할 Spring설정 파일의 위치 지정 -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	version="4.0">
+
+	<!-- ContextLoaderListener가 Root WebApplicationContext를 생성할 때 사용할 Spring설정 
+		파일의 위치 지정 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<!-- <param-value>/WEB-INF/spring/root/*.xml</param-value> -->
 		<param-value>classpath:spring/root/*.xml</param-value>
 	</context-param>
-	
-	<!-- 웹 애플리케이션이 배치(deployment)될 때와 종료(undeployment)될 때 
-	Root WebApplicationContext를 생성하고 제거하기 위해 ContextLoaderListener 설정 -->
+
+	<!-- 웹 애플리케이션이 배치(deployment)될 때와 종료(undeployment)될 때 Root WebApplicationContext를 
+		생성하고 제거하기 위해 ContextLoaderListener 설정 -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
@@ -32,10 +33,10 @@
 			<param-name>throwExceptionIfNoHandlerFound</param-name>
 			<param-value>true</param-value>
 		</init-param>
-		
+
 		<!-- 배치할 때 DispatcherServlet 객체를 미리 생성하도록 설정 -->
 		<load-on-startup>1</load-on-startup>
-		
+
 		<!-- Servlet 3.0에서 지원하는 multipart/form-data 파싱 기능을 위한 설정 -->
 		<multipart-config>
 			<!-- 임시 파일이 저장될 폴더의 절대 경로만 가능 -->
@@ -48,14 +49,15 @@
 			<file-size-threshold>1024</file-size-threshold>
 		</multipart-config>
 	</servlet>
-		
-	<!-- 클라이언트가 http://localhostL8080/webapp/* 이렇게 요청했을 때 DispatcherServlet이 처리 -->
+
+	<!-- 클라이언트가 http://localhostL8080/webapp/* 이렇게 요청했을 때 DispatcherServlet이 
+		처리 -->
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	
-	<!-- 클라이언트가  POST방식으로 한글을 보냈을 때 한글을 복원시키는 Filter 추가 -->
+
+	<!-- 클라이언트가 POST방식으로 한글을 보냈을 때 한글을 복원시키는 Filter 추가 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -64,18 +66,31 @@
 			<param-value>UTF-8</param-value>
 		</init-param>
 	</filter>
-	
-	<!-- 클라이언트가 http://localhostL8080/webapp/* 이렇게 요청했을 때 CharacterEncodingFilter이 처리 -->
+
+	<!-- 클라이언트가 http://localhostL8080/webapp/* 이렇게 요청했을 때 CharacterEncodingFilter이 
+		처리 -->
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
+
 	<!-- 404 에러 처리 -->
-	<!-- 
-	<error-page>
-		<error-code>404</error-code>
-		<location>/WEB-INF/views/ch10/404.jsp</location>	
-	</error-page>
-	 -->
+	<!-- <error-page> <error-code>404</error-code> <location>/WEB-INF/views/ch10/404.jsp</location> 
+		</error-page> -->
+		
+	<!-- FilterChainProxy을 이용해서 필터 체인 실행, 클라이언트의 요청을 검사 -->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- Spring Security 로그인 중복 방지를 위해 설정 -->
+    <listener>
+        <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
+    </listener>
+	
 </web-app>

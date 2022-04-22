@@ -29,6 +29,7 @@ public class Ch14MemberService {
 		if(dbMember == null) {
 			// 암호화
 			PasswordEncoder passwordEcnoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+//			PasswordEncoder passwordEcnoder = new BCryptPasswordEncoder();
 			member.setMpassword(passwordEcnoder.encode(member.getMpassword()));
 			int result = memberDao.insert(member);	
 			return JoinResult.SUCCESS;
@@ -49,5 +50,9 @@ public class Ch14MemberService {
 				return LoginResult.FAIL_MPASSWORD;
 			}
 		}
+	}
+	
+	public Ch14Member getMember(String mid) {
+		return memberDao.selectByMid(mid);
 	}
 }
